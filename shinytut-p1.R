@@ -39,6 +39,7 @@ shinyApp(ui, server)
 #'  
 #'  Next step is to define the outputs in the server function
 #'  
+#+ r setup, warning = FALSE
 ui <- fluidPage(
   selectInput("dataset", label = "Dataset", choices = ls("package:datasets")),
   verbatimTextOutput("summary"),
