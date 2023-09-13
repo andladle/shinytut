@@ -1,8 +1,7 @@
 #' ---
 #' title: "Shiny tutorial: Part 1"
 #' author: Andrew Ladle
-#' output: html_document
-#' runtime: shiny
+#' output: github_document
 #' ---
 
 #' First step is to load the Shiny app
