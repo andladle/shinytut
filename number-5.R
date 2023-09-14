@@ -95,3 +95,5 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui, server)
+
+#' now we have a nice and streamlined number calculator!
