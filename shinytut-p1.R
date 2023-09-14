@@ -62,3 +62,28 @@ shinyApp(ui, server)
 
 #' Done! Now we have a drop down menu with outputs either as a summary or as
 #' a complete table
+#' 
+#' Next step in tutorial is to reduce duplication, this is done by creating a
+#' reactive expression for the dataset <- get(input$dataset, "package:datasets")
+#' 
+ui <- fluidPage(
+  selectInput("dataset", label = "Dataset", choices = ls("package:datasets")),
+  verbatimTextOutput("summary"),
+  tableOutput("table")
+)
+
+server <- function(input, output, session) {
+  # Create reactive expression
+  dataset <- reactive({
+    get(input$dataset, "package:datasets")
+  })
+  output$summary <- renderPrint({
+    summary(dataset())
+  })
+  
+  output$table <- renderTable({
+    dataset()
+  })
+}
+
+shinyApp(ui, server)
