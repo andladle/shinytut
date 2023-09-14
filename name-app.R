@@ -6,13 +6,16 @@
 #' 
 ui <- fluidPage(
 textInput("name", "What's your name?"),
-
+actionButton('enter_proxy', "Enter"),
 textOutput("greeting")
 )
 
 server <- function(input,output, session){
+  enteredText <- eventReactive(input$enter_proxy, {
+    input$name
+  })
   output$greeting <- renderText({
-    paste0("Nice to meet you, ", input$name)
+    paste0("Nice to meet you, ", enteredText())
   })
 }
 
